@@ -21,7 +21,7 @@ router.post('/', async (req,res) => {
     
     //find if User is not already registered 
     let user = await User.findOne({ email: req.body.email })
-    if(!user) return res.status(400).send("User not found"); //Invalid email or password."); 
+    if(!user) return res.status(400).send("Invalid email or password."); //User not found."); 
     //if user is null/undefined then is doesn't exists in db, thus invalid login   //dont send 404 if user not found. 
 
     
@@ -29,7 +29,7 @@ router.post('/', async (req,res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password); //return promise
     //takes salt from user.password and uses it with hashed req.body.password to compare
 
-    if(!validPassword) return res.status(400).send("Password issue");//Invalid email or password."); 
+    if(!validPassword) return res.status(400).send("Invalid email or password.");//Incorrect password."); 
 
     //at this point the login request is valid.
 

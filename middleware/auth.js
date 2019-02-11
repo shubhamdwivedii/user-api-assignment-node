@@ -17,7 +17,8 @@ function auth(req, res, next){
         
         req.user = decoded; 
         //adds user id in request body 
-
+        
+        //console.log("auth-jwt user: ", req.user);
         next();    
     }
     catch(ex){
